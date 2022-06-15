@@ -1,0 +1,36 @@
+<%- include("header"); -%>
+    <!-- the include lets us add HTML layout to many pages with less codes -->
+
+    <h1 class="box" id="heading">
+        <%= listTitle %> - Todo List
+    </h1>
+
+
+    <div class="box">
+        <% newListItems.forEach((item)=> { %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%= item._id %>" onchange="this.form.submit()">
+                    <p>
+                        <%= item.name %>
+                    </p>
+                    <!-- for each item in my array lists, it will the added as textContent into the p tag -->
+                </div>
+                <!-- the input below is used by developers to perform operations that are hidden from the users -->
+                <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+            </form>
+            <% }) %>
+
+                <!-- form -->
+                <form action="/" method="post">
+                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                    <!-- there won't be suggestions from the input box when css autocomplete attribute is set to off -->
+                    <button type="submit" name="list" value=<%=listTitle %> >+</button>
+                </form>
+    </div>
+
+    <!-- ALL LOGICAL OPERATION SHOULD BE DONE INSIDE THE APP.JS, YOU ONLY USE EJS TO CONTROL FLOW WHEN A SMALL CONTENT NEEDS TO BE CHANGED -->
+
+    <!-- ALL VALID HTML CODE ARE VALID IN EJS FILE TOO -->
+
+    <%- include("footer"); -%>
