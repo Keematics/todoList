@@ -153,10 +153,27 @@ app.get("/about", (req, res) => {
 
 });
 
-// app.post("/work", (req, res) => {
-//     let item = req.body.newItem;
-// })
 
-app.listen(3000, function () {
-    console.log("This server is on port 3000");
+
+
+// SETTING HEROKU PORT, TO BE ABLE TO ACCESS IT ON WEB AND LOCALLY
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 3000;
+}
+
+app.listen(port, function () {
+    console.log("The server has started successfully!");
 });
+
+
+// USING HEROKU
+//1. LOG IN ON HEROKU WEBSITE AND FOLLOW THE DOCUMENTATION - git init, git add ., git commit -m "",....
+//2. TYPE heroku login IN THE CLI TO LOG IN
+//3. TYPE heroku create IN THE CLI TO CREATE NEW APP
+//4. CREATE A "Procfile" FILE IN THE APP ROOT WITH NO EXTENSION - touch Procfile
+//5. SETTING HEROKU PORT
+//6. USING DATABASE - IT'S BEEN SET ALREADY ON MONGODB ATLAS, SO I SKIPPED IT.
+//7. COMPLETE LANGUAGE SPECIFIC SETUP - ADDING THE CURRENT VERSION OF NODE TO THE package.json FILE
+
+//8. CREATE .gitignore FILE - touch .gitignore, THE SAMPLE FILES PROVIDED ON HEROKU DOCUMENTATION ARE ADDED e.g node_modules...
