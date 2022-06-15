@@ -176,4 +176,5 @@ app.listen(port, function () {
 //6. USING DATABASE - IT'S BEEN SET ALREADY ON MONGODB ATLAS, SO I SKIPPED IT.
 //7. COMPLETE LANGUAGE SPECIFIC SETUP - ADDING THE CURRENT VERSION OF NODE TO THE package.json FILE
 
-//8. CREATE .gitignore FILE - touch .gitignore, THE SAMPLE FILES PROVIDED ON HEROKU DOCUMENTATION ARE ADDED e.g node_modules...
+//8. CREATE .gitignore FILE - touch .gitignore, THE SAMPLE FILES PROVIDED ON HEROKU DOCUMENTATION ARE ADDED e.g node_modules/...
+//9. git push heroku master.
