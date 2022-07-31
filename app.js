@@ -16,7 +16,10 @@ app.set("view engine", "ejs"); // ejs = embedded javascript, this is how it's se
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public")); // This tells express to locate some static files I have inside the public folder
 
-mongoose.connect("mongodb+srv://iKeem:admin123@cluster0.avoley4.mongodb.net/todolistDB", { useNewUrlParser: true });
+
+const CONNECTION_URL = process.env.CONNECTION_URL;
+
+mongoose.connect(CONNECTION_URL, { useNewUrlParser: true });
 
 
 const itemsShema = new mongoose.Schema({
@@ -157,12 +160,12 @@ app.get("/about", (req, res) => {
 
 
 // SETTING HEROKU PORT, TO BE ABLE TO ACCESS IT ON WEB AND LOCALLY
-let port = process.env.PORT;
-if (port == null || port == "") {
-    port = 3000;
+let PORT = process.env.PORT;
+if (PORT == null || PORT == "") {
+    PORT = PORT;
 }
 
-app.listen(port, function () {
+app.listen(PORT, function () {
     console.log("The server has started successfully!");
 });
 
